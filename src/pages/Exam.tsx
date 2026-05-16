@@ -6,7 +6,9 @@ import QuestionCard from '../components/QuestionCard';
 import Timer from '../components/Timer';
 import type { QuestionType, QuizRecord } from '../types';
 
-const chapters = [...new Set(questions.map((q) => q.chapter))];
+const chapters = [...new Set(questions.map((q) => q.chapter))].sort(
+  (a, b) => questions.findIndex((q) => q.chapter === a) - questions.findIndex((q) => q.chapter === b),
+);
 
 export default function Exam() {
   const [records, setRecords] = useStorage<QuizRecord[]>('quiz-records', []);

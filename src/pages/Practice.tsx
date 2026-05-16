@@ -5,7 +5,9 @@ import { useStorage } from '../hooks/useStorage';
 import QuestionCard from '../components/QuestionCard';
 import type { QuestionType, QuizRecord } from '../types';
 
-const chapters = [...new Set(questions.map((q) => q.chapter))];
+const chapters = [...new Set(questions.map((q) => q.chapter))].sort(
+  (a, b) => questions.findIndex((q) => q.chapter === a) - questions.findIndex((q) => q.chapter === b),
+);
 
 export default function Practice() {
   const [records, setRecords] = useStorage<QuizRecord[]>('quiz-records', []);

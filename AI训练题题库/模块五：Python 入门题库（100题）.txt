@@ -1,0 +1,913 @@
+基础语法篇（1-30题）
+Q1: Python 中以下哪个用于输出内容到控制台？
+A: print()
+B: input()
+C: output()
+D: console.log()
+答案: A
+解析: print() 是 Python 内置的输出函数。
+类型: single
+
+Q2: 以下哪个是 Python 中合法的变量名？
+A: 2var
+B: my-var
+C: _myVar
+D: my var
+答案: C
+解析: 变量名可以以下划线或字母开头，不能以数字开头，不能包含空格或连字符。
+类型: single
+
+Q3: Python 中单行注释使用的符号是？
+A: //
+B: /*
+C: #
+D: <!--
+答案: C
+解析: # 用于单行注释，多行注释可用三个引号。
+类型: single
+
+Q4: 以下哪个数据类型是不可变的？
+A: list
+B: dict
+C: set
+D: tuple
+答案: D
+解析: tuple 创建后不可修改，list、dict、set 均可变。
+类型: single
+
+Q5: 执行 bool(0) 的结果是什么？
+A: True
+B: False
+C: 0
+D: None
+答案: B
+解析: 在布尔上下文中，0、空字符串、None 等被视为 False。
+类型: single
+
+Q6: 以下哪个用于获取字符串的长度？
+A: len(str)
+B: str.length()
+C: size(str)
+D: count(str)
+答案: A
+解析: len() 是 Python 内置函数，返回对象长度。
+类型: single
+
+Q7: 3 + 2 * 2 的结果是？
+A: 10
+B: 7
+C: 8
+D: 9
+答案: B
+解析: 乘法优先级高于加法，先计算 2*2=4，再加3得7。
+类型: single
+
+Q8: Python 中 // 运算符的作用是？
+A: 除法取整
+B: 除法取余
+C: 幂运算
+D: 逻辑与
+答案: A
+解析: // 执行整数除法，返回商向下取整。
+类型: single
+
+Q9: 以下哪个语句用于从函数中返回值？
+A: exit
+B: break
+C: return
+D: continue
+答案: C
+解析: return 用于函数返回结果并结束函数。
+类型: single
+
+Q10: 以下哪个是 Python 中的条件语句关键字？
+A: if
+B: when
+C: for
+D: while
+答案: A
+解析: if 是条件判断，for/while 是循环。
+类型: single
+
+Q11: 以下代码的输出是什么？
+x = [1,2,3]; print(x[1])
+A: 1
+B: 2
+C: 3
+D: 索引错误
+答案: B
+解析: 列表索引从0开始，x[1] 是第二个元素2。
+类型: single
+
+Q12: 以下哪个方法用于向列表末尾添加元素？
+A: append()
+B: insert()
+C: add()
+D: push()
+答案: A
+解析: append() 在末尾添加元素，insert() 可指定位置。
+类型: single
+
+Q13: Python 中 input() 函数返回的数据类型是？
+A: int
+B: float
+C: str
+D: list
+答案: C
+解析: input() 始终返回字符串，需要类型转换。
+类型: single
+
+Q14: 以下哪个是 Python 中用于循环的可迭代对象？
+A: for
+B: while
+C: range
+D: if
+答案: C
+解析: range() 生成数字序列，常用于 for 循环。
+类型: single
+
+Q15: 以下哪个表达式用于检查变量 a 是否为整数？
+A: type(a) == 'int'
+B: a is int
+C: isinstance(a, int)
+D: a.type() == int
+答案: C
+解析: isinstance() 是推荐的类型检查方法。
+类型: single
+
+Q16: 执行 'hello'.upper() 的结果是？
+A: 'HELLO'
+B: 'Hello'
+C: 'hello'
+D: 报错
+答案: A
+解析: upper() 方法将字符串转换为大写。
+类型: single
+
+Q17: Python 中定义函数使用的关键字是？
+A: def
+B: func
+C: define
+D: function
+答案: A
+解析: def 是 Python 函数定义关键字。
+类型: single
+
+Q18: 以下哪个是有效的字典定义？
+A: {1,2,3}
+B: [1,2,3]
+C: {'a':1, 'b':2}
+D: (1,2,3)
+答案: C
+解析: 字典是键值对，花括号内逗号分隔的 key:value。
+类型: single
+
+Q19: 5 % 2 的结果是？
+A: 2
+B: 1
+C: 2.5
+D: 0
+答案: B
+解析: % 是取模运算符，5除以2余1。
+类型: single
+
+Q20: 以下哪个语句会引发 SyntaxError？
+A: print('hello')
+B: if x > 0: print(x)
+C: for i in range(10) print(i)
+D: while True: break
+答案: C
+解析: for 循环语句末尾缺少冒号，语法错误。
+类型: single
+
+Q21: 以下哪个用于导入模块？
+A: include
+B: import
+C: using
+D: require
+答案: B
+解析: import 是 Python 导入模块的关键字。
+类型: single
+
+Q22: 执行 list(range(5)) 得到的结果是？
+A: [0,1,2,3,4]
+B: [1,2,3,4,5]
+C: [0,1,2,3,4,5]
+D: 报错
+答案: A
+解析: range(5) 生成 0~4，list() 转换为列表。
+类型: single
+
+Q23: 以下哪个是 Python 中的逻辑与运算符？
+A: &&
+B: and
+C: &
+D: AND
+答案: B
+解析: Python 使用 and、or、not 作为逻辑运算符。
+类型: single
+
+Q24: 以下哪个选项可以正确交换变量 a 和 b 的值？
+A: a = b; b = a
+B: a, b = b, a
+C: swap(a,b)
+D: a = b; b = a - b; a = a - b
+答案: B
+解析: Python 支持元组解包交换。
+类型: single
+
+Q25: 以下哪个方法可以删除列表中的最后一个元素？
+A: del[-1]
+B: remove()
+C: pop()
+D: delete()
+答案: C
+解析: pop() 默认移除并返回最后一个元素。
+类型: single
+
+Q26: 以下哪个是创建空元组的正确方式？
+A: []
+B: {}
+C: ()
+D: set()
+答案: C
+解析: 空元组用 ()，空列表用 []，空字典用 {}。
+类型: single
+
+Q27: 'abc' * 3 的结果是什么？
+A: 'abcabcabc'
+B: 9
+C: 'abc3'
+D: 报错
+答案: A
+解析: 字符串乘法表示重复拼接。
+类型: single
+
+Q28: Python 中 None 的类型是？
+A: NoneType
+B: nulltype
+C: undefined
+D: 0
+答案: A
+解析: None 是 NoneType 类型的唯一值。
+类型: single
+
+Q29: 以下哪个函数用于将字符串转换为整数？
+A: str()
+B: int()
+C: float()
+D: eval()
+答案: B
+解析: int() 将字符串或数字转换为整数。
+类型: single
+
+Q30: 以下哪个是 Python 中的集合（set）字面量？
+A: [1,2,3]
+B: (1,2,3)
+C: {1,2,3}
+D: {'a':1}
+答案: C
+解析: 花括号内无冒号的是集合，有冒号是字典。
+类型: single
+
+进阶语法与数据结构篇（31-70题）
+Q31: 以下哪个可以正确创建包含 0 到 9 的列表推导式？
+A: [i for i in range(10)]
+B: [i for i in 10]
+C: {i for i in range(10)}
+D: (i for i in range(10))
+答案: A
+解析: 列表推导式使用方括号。
+类型: single
+
+Q32: 以下哪个方法用于获取字典的所有键？
+A: dict.keys()
+B: dict.values()
+C: dict.items()
+D: dict.get()
+答案: A
+解析: keys() 返回键视图，values() 返回值视图。
+类型: single
+
+Q33: 函数定义中 *args 的作用是什么？
+A: 接收任意数量的位置参数作为元组
+B: 接收任意数量的关键字参数作为字典
+C: 表示参数默认值
+D: 表示强制关键字参数
+答案: A
+解析: *args 收集多余的位置参数，kwargs 收集关键字参数。**
+类型: single
+
+Q34: 以下代码的输出是什么？
+a = [1,2,3]; b = a; b.append(4); print(a)
+A: [1,2,3]
+B: [1,2,3,4]
+C: [1,2,3] [4]
+D: 报错
+答案: B
+解析: 列表是可变对象，b 和 a 引用同一对象，修改 b 也会影响 a。
+类型: single
+
+Q35: 以下哪个用于捕获异常？
+A: try-except
+B: if-error
+C: catch
+D: handle
+答案: A
+解析: try-except 是 Python 异常处理结构。
+类型: single
+
+Q36: 以下哪个是生成器表达式的正确写法？
+A: (x for x in range(10))
+B: [x for x in range(10)]
+C: {x for x in range(10)}
+D: {x: x for x in range(10)}
+答案: A
+解析: 生成器表达式使用圆括号，惰性求值。
+类型: single
+
+Q37: 以下哪个方法可以反转列表？
+A: list.reverse()
+B: reversed(list)
+C: list.sort(reverse=True)
+D: 以上都是
+答案: D
+解析: reverse() 原地反转，reversed() 返回迭代器，sort(reverse=True) 按值逆序排序。
+类型: multi
+
+Q38: lambda x: x**2 是什么？
+A: 匿名函数
+B: 装饰器
+C: 生成器
+D: 类方法
+答案: A
+解析: lambda 表达式创建小型匿名函数。
+类型: single
+
+Q39: 以下哪个装饰器用于定义类方法？
+A: @staticmethod
+B: @classmethod
+C: @property
+D: 以上都是
+答案: D
+解析: 分别定义静态方法、类方法、属性。
+类型: multi
+
+Q40: is 和 == 的区别是？
+A: is 比较值，== 比较身份
+B: is 比较身份，== 比较值
+C: 没有区别
+D: is 只能用于数字
+答案: B
+解析: is 检查对象同一性，== 检查值相等。
+类型: single
+
+Q41: 以下哪个不会抛出异常？
+A: 1/0
+B: int('abc')
+C: [1,2,3][5]
+D: 10/2
+答案: D
+解析: D 正常运算，其他分别引发 ZeroDivisionError、ValueError、IndexError。
+类型: single
+
+Q42: 以下哪个用于读取文件全部内容？
+A: file.read()
+B: file.readline()
+C: file.readlines()
+D: file.readall()
+答案: A
+解析: read() 无参数时读取全部。
+类型: single
+
+Q43: 以下哪个是 Python 中的“切片”操作？
+A: list[1:5]
+B: list[1]
+C: list[::2]
+D: A 和 C
+答案: D
+解析: 切片使用冒号，可以指定起始、结束、步长。
+类型: multi
+
+Q44: 以下哪个语句会引发 TypeError？
+A: 'hello' + 123
+B: 'hello' + '123'
+C: 123 + 456
+D: 123 + 456.0
+答案: A
+解析: 字符串不能直接与整数相加，需转换。
+类型: single
+
+Q45: 以下哪个是 Python 中的“浅拷贝”方式？
+A: copy.copy()
+B: list[:]
+C: dict.copy()
+D: 以上都是
+答案: D
+解析: 三种方式都产生浅拷贝。
+类型: multi
+
+Q46: 关于 global 关键字的说法正确的是？
+A: 在函数内修改全局变量需要声明 global
+B: 在函数内读取全局变量不需要 global
+C: 在嵌套函数内修改外层非全局变量需要 nonlocal
+D: 以上都是
+答案: D
+解析: 作用域规则。
+类型: multi
+
+Q47: 以下哪个模块用于处理正则表达式？
+A: re
+B: regex
+C: string
+D: pattern
+答案: A
+解析: re 模块是 Python 标准正则表达式库。
+类型: single
+
+Q48: 以下哪个是 Python 中用于时间延迟的函数？
+A: time.sleep()
+B: time.wait()
+C: sys.delay()
+D: os.pause()
+答案: A
+解析: time.sleep(seconds) 使程序暂停。
+类型: single
+
+Q49: 以下哪个是 Python 中用于处理 JSON 的模块？
+A: json
+B: pickle
+C: csv
+D: xml
+答案: A
+解析: json 模块用于 JSON 数据序列化。
+类型: single
+
+Q50: 以下代码的输出是什么？
+print(1, 2, 3, sep='-')
+A: 1-2-3
+B: 123
+C: 1 2 3
+D: -1-2-3
+答案: A
+解析: sep 参数指定分隔符，默认为空格。
+类型: single
+
+Q51: 以下哪个是 Python 中的“列表排序”方法，会改变原列表？
+A: sorted(list)
+B: list.sort()
+C: list.sorted()
+D: 两者都改变
+答案: B
+解析: sort() 原地排序，sorted() 返回新列表。
+类型: single
+
+Q52: 以下哪个用于检查字符串是否以字母开头？
+A: str.isalpha()
+B: str.isdigit()
+C: str.isalnum()
+D: str.startswith()
+答案: A
+解析: isalpha() 检测是否全是字母。
+类型: single
+
+Q53: 关于 with 语句的说法正确的是？
+A: 用于上下文管理，自动关闭资源
+B: 可以替代 try-finally
+C: 常用于文件操作
+D: 以上都是
+答案: D
+解析: with 确保资源正确释放。
+类型: multi
+
+Q54: 以下哪个是 Python 中获取当前工作目录的函数？
+A: os.getcwd()
+B: os.path.dirname()
+C: sys.getcwd()
+D: path.current()
+答案: A
+解析: os.getcwd() 返回当前工作目录。
+类型: single
+
+Q55: 以下哪个可以创建字典的副本（浅拷贝）？
+A: dict.copy()
+B: dict(d)
+C: copy.copy(d)
+D: 以上都是
+答案: D
+解析: 多种浅拷贝方式。
+类型: multi
+
+Q56: 以下代码的输出是什么？
+a = 10; b = 20; a, b = b, a; print(a,b)
+A: 10 20
+B: 20 10
+C: 10 10
+D: 20 20
+答案: B
+解析: 元组解包交换。
+类型: single
+
+Q57: 以下哪个是 Python 中正确的集合运算？
+A: union()
+B: intersection()
+C: difference()
+D: 以上都是
+答案: D
+解析: 集合支持并、交、差运算。
+类型: multi
+
+Q58: 以下哪个可以获取列表中的最大值？
+A: max(list)
+B: list.max()
+C: max(list) 和 min(list)
+D: 以上都不对
+答案: A
+解析: max() 是内置函数。
+类型: single
+
+Q59: 关于 __init__ 方法的说法正确的是？
+A: 类的构造函数
+B: 在实例化时自动调用
+C: 可以接收参数
+D: 以上都是
+答案: D
+解析: init 初始化实例。
+类型: multi
+
+Q60: 以下哪个是 Python 中的“列表推导式”的等价循环？
+A: for 循环 + append
+B: while 循环
+C: map 函数
+D: filter 函数
+答案: A
+解析: 列表推导式本质上是 for 循环的简洁写法。
+类型: single
+
+Q61: 以下哪个模块用于生成随机数？
+A: random
+B: numpy.random
+C: secrets
+D: 以上都是
+答案: D
+解析: random 通用，secrets 用于密码学安全随机数。
+类型: multi
+
+Q62: 以下代码的输出是什么？
+def add(x, y=[]): y.append(x); return y; print(add(1)); print(add(2))
+A: [1] [2]
+B: [1] [1,2]
+C: [1,2] [1,2]
+D: 报错
+答案: B
+解析: 默认参数是可变对象时，会在函数定义时创建并共享。
+类型: single
+
+Q63: 以下哪个用于将字典转换为列表的键值对元组？
+A: dict.items()
+B: dict.keys()
+C: dict.values()
+D: list(dict)
+答案: A
+解析: items() 返回 (key, value) 对。
+类型: single
+
+Q64: 以下哪个是 Python 中的“装饰器”的用途？
+A: 在运行时动态增加功能
+B: 修改函数行为
+C: 用于日志、计时等
+D: 以上都是
+答案: D
+解析: 装饰器是高阶函数。
+类型: multi
+
+Q65: 以下哪个可以删除文件？
+A: os.remove()
+B: os.unlink()
+C: os.rmdir() (删除目录)
+D: A 和 B
+答案: D
+解析: remove() 和 unlink() 都可删除文件。
+类型: multi
+
+Q66: 关于 map 函数的说法正确的是？
+A: 对可迭代对象每个元素应用函数
+B: 返回迭代器
+C: 可以接受多个可迭代对象
+D: 以上都是
+答案: D
+解析: map(function, iterable, ...)。
+类型: multi
+
+Q67: 以下哪个可以正确导入模块中的特定函数？
+A: from math import sqrt
+B: import math.sqrt
+C: include math.sqrt
+D: using math.sqrt
+答案: A
+解析: from module import name 语法。
+类型: single
+
+Q68: 以下代码的输出是什么？
+print(3 * 'ab' + 'cd')
+A: 'abababcd'
+B: 'ababcd'
+C: 'ababab cd'
+D: 报错
+答案: A
+解析: 字符串乘法重复，然后拼接。
+类型: single
+
+Q69: 以下哪个是 Python 中的“枚举”的正确用法？
+A: for i, value in enumerate(list):
+B: for i, value in range(list):
+C: for i, value in index(list):
+D: enumerate(list) 返回索引和值
+答案: A
+解析: enumerate() 生成 (index, value) 对。
+类型: single
+
+Q70: 以下哪个用于检查文件是否存在？
+A: os.path.exists()
+B: os.path.isfile()
+C: os.exists()
+D: A 和 B
+答案: D
+解析: exists() 检查路径存在，isfile() 检查是否为文件。
+类型: multi
+
+实战与面向对象篇（71-100题）
+Q71: 以下哪个是类的正确定义？
+A: class MyClass: pass
+B: def MyClass: pass
+C: object MyClass: pass
+D: new MyClass: pass
+答案: A
+解析: class 关键字定义类。
+类型: single
+
+Q72: 关于 self 参数的说法正确的是？
+A: 指向实例本身
+B: 在定义实例方法时必须作为第一个参数
+C: 可以改名（如 this）
+D: 以上都是
+答案: D
+解析: self 是约定名称，可以改为其他合法名称。
+类型: multi
+
+Q73: 以下哪个是创建子类的正确语法？
+A: class Child(Parent):
+B: class Child extends Parent:
+C: class Child inherit Parent:
+D: class Child : Parent
+答案: A
+解析: Python 继承使用括号。
+类型: single
+
+Q74: 以下哪个是“私有属性”的命名约定？
+A: __var
+B: var
+C: var
+D: var
+答案: A
+解析: 双下划线前缀触发名称修饰，单下划线是约定保护。
+类型: single
+
+Q75: 以下哪个方法在对象被销毁时调用？
+A: del
+B: exit
+C: destroy
+D: free
+答案: A
+解析: del 是析构方法，但不保证立即执行。
+类型: single
+
+Q76: 以下代码的输出是什么？
+class A: pass; print(isinstance(A(), A))
+A: True
+B: False
+C: None
+D: 报错
+答案: A
+解析: isinstance 检查对象是否为类的实例。
+类型: single
+
+Q77: 以下哪个是“静态方法”的正确装饰器？
+A: @staticmethod
+B: @classmethod
+C: @abstractmethod
+D: @property
+答案: A
+解析: 静态方法不需要 self 或 cls。
+类型: single
+
+Q78: 关于 super() 的说法正确的是？
+A: 调用父类方法
+B: 解决多重继承问题
+C: 必须传入类名和实例
+D: Python 3 中可以不带参数
+答案: D
+解析: Python 3 中 super() 自动推断。
+类型: multi
+
+Q79: 以下哪个是“抽象基类”的正确导入？
+A: from abc import ABC, abstractmethod
+B: from abstract import ABC
+C: import ABC
+D: from abc import abstract
+答案: A
+解析: abc 模块提供抽象基类支持。
+类型: single
+
+Q80: 以下哪个是“属性装饰器”的正确用法？
+A: @property
+B: @attribute
+C: @getter
+D: @prop
+答案: A
+解析: @property 将方法转为只读属性。
+类型: single
+
+Q81: 以下哪个模块用于处理命令行参数？
+A: argparse
+B: sys.argv
+C: getopt
+D: 以上都是
+答案: D
+解析: argparse 推荐，sys.argv 原始参数。
+类型: multi
+
+Q82: 以下代码的输出是什么？
+def outer(): x = 10; def inner(): nonlocal x; x = 20; inner(); print(x); outer()
+A: 10
+B: 20
+C: None
+D: 报错
+答案: B
+解析: nonlocal 修改外层函数变量。
+类型: single
+
+Q83: 以下哪个是 Python 中实现“单例模式”的常见方式？
+A: 使用装饰器
+B: 重写 new 方法
+C: 使用模块级变量
+D: 以上都是
+答案: D
+解析: 多种实现方式。
+类型: multi
+
+Q84: 以下哪个可以复制嵌套列表（深拷贝）？
+A: copy.deepcopy()
+B: copy.copy()
+C: list[:]
+D: 以上都不行
+答案: A
+解析: deepcopy 递归复制所有层次。
+类型: single
+
+Q85: 关于 __slots__ 的说法正确的是？
+A: 限制实例属性，节省内存
+B: 防止动态添加属性
+C: 定义在类中
+D: 以上都是
+答案: D
+解析: slots 优化内存使用。
+类型: multi
+
+Q86: 以下哪个是 Python 中常用的测试框架？
+A: unittest
+B: pytest
+C: doctest
+D: 以上都是
+答案: D
+解析: 多种测试框架可选。
+类型: multi
+
+Q87: 以下代码的输出是什么？
+print([i for i in range(5) if i%2==0])
+A: [0,1,2,3,4]
+B: [0,2,4]
+C: [1,3]
+D: [0,1,2,3,4,5]
+答案: B
+解析: 列表推导式条件筛选偶数。
+类型: single
+
+Q88: 以下哪个是 Python 中的“上下文管理器”的实现方法？
+A: enter 和 exit
+B: contextlib.contextmanager 装饰器
+C: with 语句
+D: 以上都是
+答案: D
+解析: 自定义上下文管理器需要实现协议，或用装饰器。
+类型: multi
+
+Q89: 以下哪个用于获取当前脚本所在目录？
+A: os.path.dirname(file)
+B: os.getcwd()
+C: sys.path[0]
+D: A 和 C
+答案: D
+解析: file 是脚本路径，sys.path[0] 也是脚本目录。
+类型: multi
+
+Q90: 以下哪个可以写入 CSV 文件？
+A: csv.writer
+B: csv.DictWriter
+C: pandas.to_csv
+D: 以上都是
+答案: D
+解析: 多种方法写入 CSV。
+类型: multi
+
+Q91: 关于 zip 函数的说法正确的是？
+A: 将多个可迭代对象打包成元组列表
+B: 返回迭代器
+C: 可以处理长度不一的输入，按最短截断
+D: 以上都是
+答案: D
+解析: zip 是内置函数。
+类型: multi
+
+Q92: 以下代码的输出是什么？
+a = [1,2,3]; b = a[:]; a.append(4); print(b)
+A: [1,2,3]
+B: [1,2,3,4]
+C: [1,2,3] [4]
+D: 报错
+答案: A
+解析: 切片创建了列表的浅拷贝，独立于原列表。
+类型: single
+
+Q93: 以下哪个是 Python 中的“类型提示”的正确语法？
+A: def func(x: int) -> str:
+B: def func(x int) returns str:
+C: def func(x: int) returns str:
+D: def func(x) -> str:
+答案: A
+解析: 类型提示使用冒号和箭头。
+类型: single
+
+Q94: 关于 @dataclass 装饰器的说法正确的是？
+A: 自动生成 init 等方法
+B: 需要从 dataclasses 导入
+C: 减少样板代码
+D: 以上都是
+答案: D
+解析: 数据类简化定义。
+类型: multi
+
+Q95: 以下哪个是 Python 中处理异步代码的关键字？
+A: async/await
+B: yield
+C: def
+D: with
+答案: A
+解析: async/await 用于异步编程。
+类型: single
+
+Q96: 关于 yield 的说法正确的是？
+A: 用于生成器函数
+B: 暂停函数并返回值
+C: 可以通过 next() 恢复
+D: 以上都是
+答案: D
+解析: yield 是生成器核心。
+类型: multi
+
+Q97: 以下哪个可以获取当前 Python 解释器路径？
+A: sys.executable
+B: os.sys.path
+C: python.path
+D: sys.path[0]
+答案: A
+解析: sys.executable 是解释器绝对路径。
+类型: single
+
+Q98: 以下代码的输出是什么？
+def f(x, l=[]): l.append(x); return l; print(f(1)); print(f(2))
+A: [1] [2]
+B: [1] [1,2]
+C: [1,2] [1,2]
+D: 报错
+答案: B
+解析: 默认参数可变对象共享陷阱。
+类型: single
+
+Q99: 以下哪个是 Python 中性能分析模块？
+A: cProfile
+B: profile
+C: timeit
+D: 以上都是
+答案: D
+解析: 多种性能分析工具。
+类型: multi
+
+Q100: 关于 __name__ == '__main__' 的说法正确的是？
+A: 当脚本作为主程序运行时条件为真
+B: 当脚本被导入时条件为假
+C: 用于区分模块运行方式
+D: 以上都是
+答案: D
+解析: 标准入口点判断。
+类型: multi
