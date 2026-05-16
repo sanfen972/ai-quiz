@@ -88,10 +88,10 @@ export default function Exam() {
           <input type="range" min={3} max={60} step={1} value={timeLimit} onChange={(e) => setTimeLimit(+e.target.value)} />
           <label>选择章节：</label>
           <div className="checkbox-group">
-            {chapters.map((ch) => (
+            {chapters.map((ch, i) => (
               <label key={ch} className="checkbox">
                 <input type="checkbox" checked={selectedChapters.includes(ch)} onChange={() => toggleChapter(ch)} />
-                {ch}
+                {i + 1}. {ch}
               </label>
             ))}
           </div>
