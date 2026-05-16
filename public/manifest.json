@@ -1,0 +1,16 @@
+{
+  "name": "AI训练师 知识考题题库",
+  "short_name": "AI题库",
+  "description": "AI训练师知识考题题库，辅助掌握人工智能训练相关知识的自测工具",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#f8fafc",
+  "theme_color": "#6366f1",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}
