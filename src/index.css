@@ -277,6 +277,45 @@ body {
   border-color: var(--primary);
 }
 
+/* ====== Data Sync ====== */
+.sync-section {
+  margin-top: 36px;
+  padding-top: 20px;
+}
+
+.sync-divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.sync-divider::before,
+.sync-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+
+.sync-divider span {
+  font-size: 13px;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.sync-hint {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-bottom: 12px;
+}
+
+.sync-buttons {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
 /* ====== Setup Page ====== */
 .setup-page h1 {
   margin-bottom: 4px;
