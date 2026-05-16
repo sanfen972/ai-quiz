@@ -3,7 +3,7 @@ import { questions } from '../data/questions';
 import { useQuiz } from '../hooks/useQuiz';
 import { useStorage } from '../hooks/useStorage';
 import QuestionCard from '../components/QuestionCard';
-import type { QuestionType, QuizRecord } from '../types';
+import type { QuizRecord } from '../types';
 
 const chapters = [...new Set(questions.map((q) => q.chapter))].sort(
   (a, b) => questions.findIndex((q) => q.chapter === a) - questions.findIndex((q) => q.chapter === b),
@@ -14,13 +14,12 @@ export default function Practice() {
   const [started, setStarted] = useState(false);
   const [questionCount, setQuestionCount] = useState(10);
   const [selectedChapters, setSelectedChapters] = useState<string[]>(chapters);
-  const [selectedTypes, setSelectedTypes] = useState<QuestionType[]>(['single', 'multiple', 'judgment']);
   const [showResult, setShowResult] = useState(false);
   const [finished, setFinished] = useState(false);
 
   const filteredPool = useMemo(
-    () => questions.filter((q) => selectedChapters.includes(q.chapter) && selectedTypes.includes(q.type)),
-    [selectedChapters, selectedTypes],
+    () => questions.filter((q) => selectedChapters.includes(q.chapter)),
+    [selectedChapters],
   );
 
   const { current, isFirst, isLast, progress, startQuiz, selectOption, goNext, goPrev, state, finish } = useQuiz(filteredPool);
@@ -28,11 +27,9 @@ export default function Practice() {
   const toggleChapter = (ch: string) =>
     setSelectedChapters((prev) => (prev.includes(ch) ? prev.filter((c) => c !== ch) : [...prev, ch]));
 
-  const toggleType = (t: QuestionType) =>
-    setSelectedTypes((prev) => (prev.includes(t) ? prev.filter((x) => x !== t) : [...prev, t]));
 
   const handleStart = () => {
-    if (selectedChapters.length === 0 || selectedTypes.length === 0 || filteredPool.length === 0) return;
+    if (selectedChapters.length === 0 || filteredPool.length === 0) return;
     const count = Math.min(questionCount, filteredPool.length);
     startQuiz(filteredPool, count);
     setStarted(true);
@@ -79,15 +76,6 @@ export default function Practice() {
               <label key={ch} className="checkbox">
                 <input type="checkbox" checked={selectedChapters.includes(ch)} onChange={() => toggleChapter(ch)} />
                 {i + 1}. {ch}
-              </label>
-            ))}
-          </div>
-          <label>题目类型：</label>
-          <div className="checkbox-group">
-            {(['single', 'multiple', 'judgment'] as QuestionType[]).map((t) => (
-              <label key={t} className="checkbox">
-                <input type="checkbox" checked={selectedTypes.includes(t)} onChange={() => toggleType(t)} />
-                {{ single: '单选题', multiple: '多选题', judgment: '判断题' }[t]}
               </label>
             ))}
           </div>
