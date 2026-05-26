@@ -1,11 +1,12 @@
-import { useMemo, useRef, useCallback } from 'react';
+import { useMemo } from 'react';
 import { questions } from '../data/questions';
 import { useStorage } from '../hooks/useStorage';
+import { useDataSync } from '../hooks/useDataSync';
 import type { QuizRecord } from '../types';
 
 export default function Stats() {
   const [records] = useStorage<QuizRecord[]>('quiz-records', []);
-  const fileInput = useRef<HTMLInputElement>(null);
+  const { fileInput, handleExport, triggerImport, handleImport } = useDataSync();
 
   const stats = useMemo(() => {
     if (records.length === 0) return null;
@@ -47,60 +48,6 @@ export default function Stats() {
 
     return { total, practice: practice.length, exams: exams.length, avgScore, chapterStats, recent, hours, mins, totalQuestions, totalCorrect };
   }, [records]);
-
-  const handleExport = useCallback(() => {
-    const data: Record<string, string | null> = {};
-    for (let i = 0; i < localStorage.length; i++) {
-      const key = localStorage.key(i);
-      if (key && (key === 'quiz-records' || key === 'wrong-mastered')) {
-        data[key] = localStorage.getItem(key);
-      }
-    }
-    const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = `ai-quiz-backup-${new Date().toISOString().slice(0, 10)}.json`;
-    a.click();
-    URL.revokeObjectURL(url);
-  }, []);
-
-  const handleImport = useCallback(() => {
-    fileInput.current?.click();
-  }, []);
-
-  const handleFileChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (!file) return;
-    const reader = new FileReader();
-    reader.onload = (ev) => {
-      try {
-        const data = JSON.parse(ev.target?.result as string);
-        let imported = 0;
-        for (const [key, value] of Object.entries(data)) {
-          if ((key === 'quiz-records' || key === 'wrong-mastered') && typeof value === 'string') {
-            if (key === 'quiz-records') {
-              const existing = JSON.parse(localStorage.getItem(key) || '[]');
-              const incoming = JSON.parse(value);
-              localStorage.setItem(key, JSON.stringify(existing.concat(incoming)));
-              imported += incoming.length;
-            } else {
-              const existing = JSON.parse(localStorage.getItem(key) || '[]');
-              const incoming = JSON.parse(value);
-              localStorage.setItem(key, JSON.stringify([...new Set([...existing, ...incoming])]));
-              imported++;
-            }
-          }
-        }
-        alert(`导入成功！已合并 ${imported > 0 ? imported + ' 条记录' : '数据'}。即将刷新页面。`);
-        window.location.reload();
-      } catch {
-        alert('导入失败：文件格式不正确，请选择有效的备份文件。');
-      }
-    };
-    reader.readAsText(file);
-    e.target.value = '';
-  }, []);
 
   return (
     <div className="page stats-page">
@@ -177,9 +124,9 @@ export default function Stats() {
         <div className="sync-divider"><span>数据同步</span></div>
         <p className="sync-hint">在不同设备间手动同步答题记录和错题进度</p>
         <div className="sync-buttons">
-          <button className="btn" onClick={handleExport}>📤 导出数据</button>
-          <button className="btn" onClick={handleImport}>📥 导入数据</button>
-          <input ref={fileInput} type="file" accept=".json" style={{ display: 'none' }} onChange={handleFileChange} />
+          <button className="btn" onClick={handleExport}>导出数据</button>
+          <button className="btn" onClick={triggerImport}>导入数据</button>
+          <input ref={fileInput} type="file" accept=".json" style={{ display: 'none' }} onChange={handleImport} />
         </div>
       </div>
     </div>

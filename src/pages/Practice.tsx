@@ -1,13 +1,14 @@
 import { useState, useMemo, useCallback } from 'react';
 import { questions } from '../data/questions';
+import { getChapters } from '../utils/quiz';
 import { useQuiz } from '../hooks/useQuiz';
 import { useStorage } from '../hooks/useStorage';
 import QuestionCard from '../components/QuestionCard';
+import QuizSetup from '../components/QuizSetup';
+import QuizResult from '../components/QuizResult';
 import type { QuizRecord } from '../types';
 
-const chapters = [...new Set(questions.map((q) => q.chapter))].sort(
-  (a, b) => questions.findIndex((q) => q.chapter === a) - questions.findIndex((q) => q.chapter === b),
-);
+const chapters = getChapters(questions);
 
 export default function Practice() {
   const [records, setRecords] = useStorage<QuizRecord[]>('quiz-records', []);
@@ -24,24 +25,20 @@ export default function Practice() {
 
   const { current, isFirst, isLast, progress, startQuiz, selectOption, goNext, goPrev, state, finish } = useQuiz(filteredPool);
 
-  const toggleChapter = (ch: string) =>
-    setSelectedChapters((prev) => (prev.includes(ch) ? prev.filter((c) => c !== ch) : [...prev, ch]));
-
+  const toggleChapter = useCallback((ch: string) =>
+    setSelectedChapters((prev) => (prev.includes(ch) ? prev.filter((c) => c !== ch) : [...prev, ch])),
+  []);
 
   const handleStart = () => {
     if (selectedChapters.length === 0 || filteredPool.length === 0) return;
-    const count = Math.min(questionCount, filteredPool.length);
-    startQuiz(filteredPool, count);
+    startQuiz(filteredPool, Math.min(questionCount, filteredPool.length));
     setStarted(true);
     setShowResult(false);
     setFinished(false);
   };
 
   const handleSelect = useCallback(
-    (i: number) => {
-      if (showResult) return;
-      selectOption(i);
-    },
+    (i: number) => { if (!showResult) selectOption(i); },
     [showResult, selectOption],
   );
 
@@ -56,60 +53,37 @@ export default function Practice() {
     }
   }, [isLast, finish, records, setRecords, goNext]);
 
-  const handleCheck = () => {
-    setShowResult(true);
-  };
-
   const hasAnswered = current ? (state.answers[state.currentIndex] || []).length > 0 : false;
 
   if (!started) {
     return (
-      <div className="page setup-page">
-        <h1>练习模式</h1>
-        <p className="desc">不限时，每题提交后即时显示答案和解析，适合日常学习巩固</p>
-        <div className="setup-form">
-          <label>题目数量：{Math.min(questionCount, filteredPool.length)} 题（可用 {filteredPool.length} 题）</label>
-          <input type="range" min={3} max={Math.max(3, filteredPool.length)} value={Math.min(questionCount, filteredPool.length)} onChange={(e) => setQuestionCount(+e.target.value)} />
-          <label>选择章节：</label>
-          <div className="checkbox-group">
-            {chapters.map((ch, i) => (
-              <label key={ch} className="checkbox">
-                <input type="checkbox" checked={selectedChapters.includes(ch)} onChange={() => toggleChapter(ch)} />
-                {i + 1}. {ch}
-              </label>
-            ))}
-          </div>
-          <button className="btn primary" onClick={handleStart} disabled={filteredPool.length === 0}>开始练习</button>
-        </div>
-      </div>
+      <QuizSetup
+        title="练习模式"
+        description="不限时，每题提交后即时显示答案和解析，适合日常学习巩固"
+        questionCount={questionCount}
+        maxQuestions={filteredPool.length}
+        onQuestionCountChange={setQuestionCount}
+        chapters={chapters}
+        selectedChapters={selectedChapters}
+        onToggleChapter={toggleChapter}
+        onStart={handleStart}
+        startLabel="开始练习"
+      />
     );
   }
 
   if (finished) {
     const lastRecord = records[records.length - 1];
-    const score = lastRecord?.score ?? 0;
-    const total = lastRecord?.total ?? 0;
-
     return (
-      <div className="page quiz-page">
-        <h1>练习完成！</h1>
-        <div className="score-summary">
-          <div className="big-score">{score} / {total}</div>
-          <div className="score-pct">{total > 0 ? Math.round((score / total) * 100) : 0} 分</div>
-        </div>
-        <div className="result-cards">
-          {state.questions.map((q, i) => (
-            <QuestionCard
-              key={q.id}
-              question={q}
-              selected={state.answers[i] || []}
-              onSelect={() => {}}
-              showResult
-            />
-          ))}
-        </div>
-        <button className="btn primary" onClick={() => setStarted(false)} style={{ marginTop: 16 }}>返回设置</button>
-      </div>
+      <QuizResult
+        title="练习完成！"
+        score={lastRecord?.score ?? 0}
+        total={lastRecord?.total ?? 0}
+        questions={state.questions}
+        answers={state.answers}
+        onBack={() => setStarted(false)}
+        backLabel="返回设置"
+      />
     );
   }
 
@@ -135,7 +109,7 @@ export default function Practice() {
         <button className="btn" onClick={goPrev} disabled={isFirst || showResult}>上一题</button>
         <div>
           {!showResult ? (
-            <button className="btn primary" onClick={handleCheck} disabled={!hasAnswered}>
+            <button className="btn primary" onClick={() => setShowResult(true)} disabled={!hasAnswered}>
               提交答案
             </button>
           ) : (

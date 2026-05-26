@@ -1,5 +1,6 @@
 import { useState, useCallback, useMemo } from 'react';
 import type { Question, QuizState, QuizRecord } from '../types';
+import { buildRecord } from '../utils/quiz';
 
 function shuffle<T>(arr: T[]): T[] {
   const a = [...arr];
@@ -78,23 +79,7 @@ export function useQuiz(_questions: Question[]) {
 
   const finish = useCallback(
     (mode: 'practice' | 'exam'): QuizRecord => {
-      const results = state.questions.map((q, i) => {
-        const userAns = state.answers[i] || [];
-        const correct = userAns.length === q.answer.length && userAns.every((a) => q.answer.includes(a));
-        return correct;
-      });
-      const score = results.filter(Boolean).length;
-      const record: QuizRecord = {
-        id: Date.now().toString(),
-        date: new Date().toLocaleString('zh-CN'),
-        mode,
-        questionIds: state.questions.map((q) => q.id),
-        answers: state.answers,
-        correct: results,
-        score,
-        total: state.questions.length,
-        duration: Math.floor((Date.now() - state.startTime) / 1000),
-      };
+      const record = buildRecord(state, mode);
       setState((prev) => ({ ...prev, isFinished: true }));
       return record;
     },

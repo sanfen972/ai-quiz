@@ -1,12 +1,13 @@
 import { useNavigate } from 'react-router-dom';
 import { questions } from '../data/questions';
+import { getChapters } from '../utils/quiz';
 import { useMemo } from 'react';
 
 export default function Home() {
   const navigate = useNavigate();
 
   const stats = useMemo(() => {
-    const chapters = [...new Set(questions.map((q) => q.chapter))];
+    const chapters = getChapters(questions);
     const types: Record<string, number> = { single: 0, multiple: 0, judgment: 0 };
     questions.forEach((q) => types[q.type]++);
     return { total: questions.length, chapters: chapters.length, types };
